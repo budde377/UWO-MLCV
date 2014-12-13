@@ -1,0 +1,1 @@
+function [Hr] = normalizeHistogram(Hi)
