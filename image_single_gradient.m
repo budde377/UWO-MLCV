@@ -1,7 +1,7 @@
 function [V] = image_single_gradient ( )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
-    % I = imread('/home/soeholm/MLCV/UWO-MLCV/images/preview.jpg', 'jpeg');
+    I = imread('images/preview.jpg', 'jpeg');
     I = rgb2gray(I);
     %imshow(I);
     
@@ -11,7 +11,7 @@ function [V] = image_single_gradient ( )
     Z = find(~I);
     
     % Calculate gradient direction
-    [Gmag, Gdir] = imgradient(I);
+    [~, Gdir] = imgradient(I);
     %figure;
     imshowpair(I, Gdir, 'montage');
 
@@ -33,20 +33,10 @@ function [V] = image_single_gradient ( )
 
             % Include in histogram
             p = Gdir(i);
-            
-            % Min bin value
-            d = -180;
-
+           
             % Decide the bin
-            while d <= 180
-                if p <= d
-                    V(end+1) = d;
-                    d = -180; 
-                    break
-                else
-                    d = d + b;
-                end
-            end
+            V(end+1) = floor(p./b)*b;
+            
         end
     end
     
