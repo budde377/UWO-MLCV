@@ -13,3 +13,27 @@ function [V] = image_gradients ( )
     V1 = image_single_gradient(I1);
     figure;
     hist(V1);
+    
+    I2 = I(end/2:end,1:end/2);
+    figure;
+    imshow(I2);
+    
+    V2 = image_single_gradient(I2);
+    figure;
+    hist(V2);
+    
+    I3 = I(1:end/2,end/2:end);
+    figure;
+    imshow(I3);
+    
+    V3 = image_single_gradient(I3);
+    figure;
+    hist(V3);
+    
+    I4 = I(end/2:end,end/2:end);
+    figure;
+    imshow(I4);
+    
+    V4 = image_single_gradient(I4);
+    figure;
+    hist(V4);

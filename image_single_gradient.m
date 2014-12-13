@@ -1,11 +1,11 @@
 function [V] = image_single_gradient ( )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
-    I = imread('images/preview.jpg', 'jpeg');
-    I = rgb2gray(I);
+    % I = imread('/home/soeholm/MLCV/UWO-MLCV/images/preview.jpg', 'jpeg');
+    % I = rgb2gray(I);
     %imshow(I);
     
-    I = edge(I,'canny',0.4);
+    %I = edge(I,'canny',0.4);
 
     % Find 0 pixels
     Z = find(~I);
@@ -39,6 +39,3 @@ function [V] = image_single_gradient ( )
             
         end
     end
-    
-    figure;
-    hist(V);
