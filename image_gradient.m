@@ -1,7 +1,7 @@
 function [Gmag,Gdir] = image_gradient ( )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
-    I = imread('/home/soeholm/MLCV/UWO-MLCV/images/IMG_20141128_143836b.jpg', 'jpeg');
+    I = imread('images/IMG_20141128_143836b.jpg', 'jpeg');
     I = rgb2gray(I);
     %imshow(I);
     
