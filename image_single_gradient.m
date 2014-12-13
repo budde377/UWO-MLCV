@@ -1,4 +1,4 @@
-function [V] = image_single_gradient ( )
+function [V] = image_single_gradient ( I )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
     % I = imread('/home/soeholm/MLCV/UWO-MLCV/images/preview.jpg', 'jpeg');
@@ -17,8 +17,9 @@ function [V] = image_single_gradient ( )
 
     I = double(I);
     
-    % Vector for histogram
+    % Vector for histogram    
     V = zeros(size(I)-size(Z));
+    v = 1;
     
     % Binsize
     b = 20;
@@ -35,7 +36,7 @@ function [V] = image_single_gradient ( )
             p = Gdir(i);
            
             % Decide the bin
-            V(end+1) = floor(p./b)*b;
-            
+            V(v) = floor(p./b)*b;
+            v = v+1;
         end
     end

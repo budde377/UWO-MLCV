@@ -1,9 +1,9 @@
 function [V] = image_gradients ( )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
-    I = imread('/home/soeholm/MLCV/UWO-MLCV/images/preview.jpg', 'jpeg');
+    I = imread('data_sets/data_sets/n/0a42b97c-bab0-440b-8df4-95d423af1e03.png', 'png');
     I = rgb2gray(I);
-    I = edge(I,'canny',0.4);    
+    I = edge(I,'canny',0.7);    
     imshow(I);
     
     I1 = I(1:end/2,1:end/2);

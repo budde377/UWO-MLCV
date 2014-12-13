@@ -1,7 +1,7 @@
 function [ r ] = regionof ( x, y, w )
 %UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
-    
+%   Detailed explanation goes here    
+
     a = w/2;
     b = 0.5*x + w/4;
     c = x;
