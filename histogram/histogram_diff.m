@@ -1,4 +1,4 @@
-function [D] = example_histogram_diff ( )
+function [D] = histogram_diff ( I )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -6,7 +6,6 @@ function [D] = example_histogram_diff ( )
 	addpath('emd');
 	addpath('util');
 
-	I = imread('images/2.png', 'png');
 	H = compute_image_histograms(I);
 
 	% Differences
