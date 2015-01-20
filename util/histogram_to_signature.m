@@ -12,7 +12,6 @@ function [ fs, w ] = histogram_to_signature( v )
             pos = find(fs == item,1,'first');
             w(pos) = w(pos)+1;            
         end
-        
     end
     w_sum = sum(w);
     for i = 1:size(w,2)
