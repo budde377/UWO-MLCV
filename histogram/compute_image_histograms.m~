@@ -1,6 +1,9 @@
 function [H] = compute_image_histograms ( I )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
+
+	addpath('../util');
+	
 	I = rgb2gray(I);
 	
 	% imshow(I);
@@ -18,7 +21,6 @@ function [H] = compute_image_histograms ( I )
 	I = double(I);
 	
 	% Vector for histogram	
-	%V = zeros(size(I)-size(Z));
 	H = {[1],[1],[1],[1],[1],[1],[1],[1]};
 	
 	% Binsize

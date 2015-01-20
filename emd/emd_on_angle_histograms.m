@@ -1,6 +1,6 @@
-function [ f,f_val ] = emd_on_angle_histograms( H1,H2 )
+function [ f_val ] = emd_on_angle_histograms( H1,H2 )
     
-	addpath('../util');
+%	addpath('../util');
     
 	[F1, W1] = histogram_to_signature(H1);
 	[F2, W2] = histogram_to_signature(H2);

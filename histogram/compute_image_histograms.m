@@ -1,6 +1,9 @@
 function [H] = compute_image_histograms ( I )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
+
+%	addpath('../util');
+	
 	I = rgb2gray(I);
 	
 	% imshow(I);
