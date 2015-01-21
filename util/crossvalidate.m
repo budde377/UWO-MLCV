@@ -53,6 +53,7 @@ function [name, value] = crossvalidate ( xdata, group )
 		D(f) = D(f)./k;
 	end
 
+	D
 	[~,y] = find(D == min(min(D)));
 	value = F{1,y(1)};
 
