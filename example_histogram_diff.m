@@ -6,6 +6,6 @@ function [D] = example_histogram_diff ( )
 	addpath('emd');
 	addpath('util');
 
-	I = imread('images/2.jpg', 'jpeg');
+	I = imread('images/3.jpg', 'jpeg');
 
 	D = generate_feature_vector(I);

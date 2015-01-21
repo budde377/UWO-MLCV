@@ -6,11 +6,10 @@ function [ D ] = generate_feature_vector( I )
 
 	s = 8/2;
 	% Differences
-	D = zeroes(s+1);
+	D = zeros([1,s+1]);
 	for i = 1:s
-		D(i) = emd_on_angle_histograms(H{i},H{i+b});
-	end
-	
+		D(i) = emd_on_angle_histograms(H{i},H{i+s});
+	end	
 	D(s+1) = meanof(I);
 	
 end
