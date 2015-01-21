@@ -6,7 +6,7 @@ function [] = example_save_data_matrix ( )
 	addpath('emd');
 	addpath('util');
 
-	[G, F] = generate_data_matrixes('data_sets/data_sets/train/nn/', 'data_sets/data_sets/train/n/', '*.png');
+	[G, F] = generate_data_matrixes('data_sets/data_sets/train/n/', 'data_sets/data_sets/train/nn/', '*.png');
 
 	dlmwrite('class', G);
 	dlmwrite('features', F);

@@ -4,16 +4,15 @@ function [ G, F ] = generate_data_matrixes( positive_path, negative_path, file_t
 
 	Is = load_images_from_folder(positive_path, file_type);
 	Dpos = generate_feature_matrix(Is);
-	s1 = numel(Dpos);
+	[s1,~] = size(Dpos);
 	
 	Is = load_images_from_folder(negative_path, file_type);
 	Dneg = generate_feature_matrix(Is);
-	s2 = numel(Dneg);
+	[s2, ~] = size(Dneg);
 	
-	G = cell(s1+s2, 1);
 	
-	G(1:s1) = {'positive'};
-	G(s1+1:s1+s2) = {'negative'};
+	G(1:s1,1) = 1;
+	G(s1+1:s1+s2,1) = 0;
 	F = [Dpos;Dneg];
 	
 end
