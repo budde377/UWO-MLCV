@@ -1,4 +1,4 @@
-function [name, value] = example_svmtrain ( xdata, group )
+function [name, value] = crossvalidate ( xdata, group )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
