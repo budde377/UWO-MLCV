@@ -5,8 +5,8 @@ function [svm_struct] = example_svmtrain_2 ( )
 	addpath('histogram');
 	addpath('emd');
 	addpath('util');
-
-	[G, F] = generate_data_matrixes('data_sets/data_sets/train/n/', 'data_sets/data_sets/train/nn/', '*.png');
+	G = dlmread('class');	
+	F = dlmread('features');
 
 	[name,value] = crossvalidate(F, G);
 
