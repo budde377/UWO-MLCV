@@ -15,9 +15,7 @@ function [H] = compute_image_histograms ( I )
 	
 	% Calculate gradient direction
 	[~, Gdir] = imgradient(I);
-	figure;
-	imshowpair(I, Gdir, 'montage');
-
+	
 	I = double(I);
 	
 	% Vector for histogram	

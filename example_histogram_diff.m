@@ -6,12 +6,6 @@ function [D] = example_histogram_diff ( )
 	addpath('emd');
 	addpath('util');
 
-	I = imread('images/2.png', 'png');
-	H = compute_image_histograms(I);
+	I = imread('images/2.jpg', 'jpeg');
 
-	% Differences
-	D = [];
-	b = 8/2;
-	for i = 1:b
-		D(i) = emd_on_angle_histograms(H{i},H{i+b});
-	end
+	D = generate_feature_vector(I);
