@@ -8,13 +8,11 @@ function [ N ] = find_nodes_in_image_diff_size(scale, I, box_size, step, classif
     
     while and(h >=box_size, w>=box_size)
         display(size(I))
-        Nm = find_nodes_in_image(I,box_size, step, classify);
-        [sh,~] = size(Nm);
-        Nm(1:sh,3) = box_size*j;
-        N = [N; Nm];        
+        Nm = find_nodes_in_image(I,box_size, step, classify)*j;
+        N = [N; Nm];
         j = j/scale;
         I = imresize(I, scale);
-        [h,w] = size(I);    
+        [h,w] = size(I);
     end
     
 end

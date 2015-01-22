@@ -1,11 +1,9 @@
-function [H] = compute_image_histograms ( I )
+function [H] = compute_image_histograms ( I, Gdir )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
-	I = edge(I,'canny',0.4);
     
-    % Calculate gradient direction
-    [~, Gdir] = imgradient(I);
+  
 
     % Find 0 pixels
 	Z = find(~I);

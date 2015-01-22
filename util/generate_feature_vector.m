@@ -1,8 +1,8 @@
-function [ D ] = generate_feature_vector( I )
+function [ D ] = generate_feature_vector( I, Icanny, GDir)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
-
-	H = compute_image_histograms(I);
+    
+	H = compute_image_histograms(Icanny, GDir);
    
 	s = 8/2;
 	% Differences

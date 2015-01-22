@@ -9,18 +9,18 @@ function [ ] = example_traverse_image( )
     box_size = 30;
     step = 10;
 
-    display('STARING TRAIN');
+    display('STARTING TRAIN');
     
     %TRAIN
     [G, F] = generate_data_matrixes('data_sets/data_sets/train/n/', 'data_sets/data_sets/train/nn/', '*.png');
 
 	[name,value] = crossvalidate(F, G);
 
-	svm_struct = svmtrain(F, G, name, value)
+	svm_struct = svmtrain(F, G, name, value);
 
     %FIND
     
-    display('STARING FIND');
+    display('STARTING FIND');
     
     I = imread('images/1.jpg');
     I = rgb2gray(I);
@@ -28,7 +28,17 @@ function [ ] = example_traverse_image( )
 
     classify = @(x) svmclassify(svm_struct, x);
     
-    find_nodes_in_image_diff_size(0.5, I, box_size, step, classify)
+    N = find_nodes_in_image_diff_size(0.5, I, box_size, step, classify);
+    imshow(I);
+
+    hold on
+    [rows, ~] = size(N);
+    for ni = 1:rows
+        n = N(ni, :);       
+        rectangle('Position', [n(2),n(1), n(3), n(3)])
+    end
+    hold off
     
+    display(N);
 end
 
