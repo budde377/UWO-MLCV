@@ -10,9 +10,8 @@ function [ G, F ] = generate_data_matrixes( positive_path, negative_path, file_t
 	Dneg = generate_feature_matrix(Is);
 	[s2, ~] = size(Dneg);
 	
-	G = cell(s1,1);
-	G(1:s1) = {'positive'};
-	G(s1+1:s1+s2) = {'negative'};
+	G(1:s1,1) = 1;
+	G(s1+1:s1+s2) = 0;
 	F = [Dpos;Dneg];
 	
 end
