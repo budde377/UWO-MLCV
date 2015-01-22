@@ -3,7 +3,7 @@ function [ D ] = generate_feature_vector( I )
 %   Detailed explanation goes here
 
 	H = compute_image_histograms(I);
-
+   
 	s = 8/2;
 	% Differences
 	D = zeros([1,s+1]);
