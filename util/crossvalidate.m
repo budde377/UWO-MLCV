@@ -64,7 +64,7 @@ function [name, value] = crossvalidate ( xdata, group )
 		end
 	end
 
-	D
+	display(D);
 	[~,y] = find(D == min(min(D)));
 	value = F{1,y(1)};
 

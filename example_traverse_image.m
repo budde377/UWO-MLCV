@@ -7,11 +7,12 @@ function [ ] = example_traverse_image( )
     addpath('histogram');
 
     box_size = 30;
-    step = 10;
-
-    display('STARTING TRAIN');
+    step = 5;
     
     %TRAIN
+
+    display('STARTING TRAIN');
+
     [G, F] = generate_data_matrixes('data_sets/data_sets/train/n/', 'data_sets/data_sets/train/nn/', '*.png');
 
 	[name,value] = crossvalidate(F, G);
@@ -21,21 +22,26 @@ function [ ] = example_traverse_image( )
     %FIND
     
     display('STARTING FIND');
-    
-    I = imread('images/1.jpg');
-    I = rgb2gray(I);
-    I = imresize(I, 0.1);
+    Io = imread('images/1.jpg');
+    [h,w,~] = size(Io);
+    down_size = 500;
+    if max(h,w) > down_size;
+        Io = imresize(Io,[down_size*(h/w),down_size]);
+    end 
+    I = rgb2gray(Io);
 
-    classify = @(x) svmclassify(svm_struct, x);
+    
+    
+    classify = @(x) svmclassify(svm_struct,x);
     
     N = find_nodes_in_image_diff_size(0.5, I, box_size, step, classify);
-    imshow(I);
-
+    figure;
+    imshow(Io);
     hold on
     [rows, ~] = size(N);
     for ni = 1:rows
-        n = N(ni, :);       
-        rectangle('Position', [n(2),n(1), n(3), n(3)])
+        n = N(ni, :);  
+        plot(n(2)+n(3)/2,n(1)+n(3)/2,'r.','MarkerSize',n(3))
     end
     hold off
     
