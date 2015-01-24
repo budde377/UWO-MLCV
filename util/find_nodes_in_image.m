@@ -20,14 +20,15 @@ function [ N ] = find_nodes_in_image( I, box_size, step, classify)
             offset_j = j*step;
             I3 = I(offset_i+1:offset_i+box_size, offset_j+1:offset_j+box_size);
             I3canny = Icanny(offset_i+1:offset_i+box_size, offset_j+1:offset_j+box_size);
-            I3GDir = Gdir(offset_i+1:offset_i+box_size, offset_j+1:offset_j+box_size);
+            if sum(I3canny(:)) > 0
+                I3GDir = Gdir(offset_i+1:offset_i+box_size, offset_j+1:offset_j+box_size);
 
-            v = generate_feature_vector(I3, I3canny, I3GDir);
-            c = classify(v);
-            vc = [v, c];
-            display(vc);
-            if c
-                N = [N; offset_i,offset_j, box_size];
+                v = generate_feature_vector(I3, I3canny, I3GDir);
+                c = classify(v);
+                vc = [v, c];
+                if c
+                    N = [N; offset_i,offset_j, box_size];
+                end
             end
         end
     end    

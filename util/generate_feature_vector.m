@@ -10,7 +10,7 @@ function [ D ] = generate_feature_vector( I, Icanny, GDir)
 	for i = 1:s
 		D(i) = emd_on_angle_histograms(H{i},H{i+s});
 	end	
-	D(s+1) = meanof(Icanny);
+	D(s+1) = mean(Icanny(:));
     
 end
 
