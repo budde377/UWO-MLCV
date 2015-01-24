@@ -1,4 +1,4 @@
-function [ ] = example_traverse_image( )
+function [ ] = example_traverse_image_ada( )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -21,8 +21,9 @@ function [ ] = example_traverse_image( )
         [G, F] = generate_data_matrixes('data_sets/data_sets/train/n/', 'data_sets/data_sets/train/nn/', '*.png');
 %        G = dlmread('class');
 %        F = dlmread('features');
-        svm_struct = crossvalidate(F, G);
-        save(struct_file, 'svm_struct');
+       % svm_struct = crossvalidate(F, G);
+        svm_struct = crossvalidate_ada(F,G, 50000); 
+       save(struct_file, 'svm_struct');
     end
 
     %FIND
@@ -38,7 +39,7 @@ function [ ] = example_traverse_image( )
 
     
     
-    classify = @(x) svmclassify(svm_struct,x) == 1;
+    classify = @(x) adaboost('apply', x, svm_struct) == 1;
     
     N = find_nodes_in_image_diff_size(resize_scale, I, box_size, step, classify, 0.8);
     %N = find_nodes_in_image( I, box_size, step, classify);
