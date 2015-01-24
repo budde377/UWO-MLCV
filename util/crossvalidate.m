@@ -50,7 +50,7 @@ function [svm_struct] = crossvalidate ( xdata, group )
 					success = false;
 				end
 				if success
-                    			S{1,i} = svm_struct_train;
+                    S1{1,i} = svm_struct_train;
 					Group = svmclassify(svm_struct_train, xdata_test);
 
 					d = 0;
@@ -71,7 +71,7 @@ function [svm_struct] = crossvalidate ( xdata, group )
 
 			D(f,g) = D(f,g)./k;
 			[x,y] = find(D1 == min(min(D1)));
-                   	S{f,g} = S1{x(1),y(1)};
+            S{f,g} = S1{x(1),y(1)};
 		end
 	end
 
