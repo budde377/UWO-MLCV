@@ -1,4 +1,4 @@
-function [struct] = crossvalidate ( xdata, group )
+function [svm_struct] = crossvalidate ( xdata, group )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -15,11 +15,13 @@ function [struct] = crossvalidate ( xdata, group )
 	F = {'linear','quadratic','polynomial'};
 	n2 = 'method';
 	G = {'QP','SMO','LS'};
-    n3 = 'options';
-    opt = statset('MaxIter', 50000);
+	n3 = 'options';
+	opt = statset('MaxIter', 50000);
 
 	for g = 1:3
-		for f = 1:3
+		for f = 1:3		
+			S1 = cell(1,10);
+			D1 = zeros(1,10);	
 			for i = 1:k
 				xdata_train = [1];
 				group_train = group(1,1);
@@ -48,7 +50,7 @@ function [struct] = crossvalidate ( xdata, group )
 					success = false;
 				end
 				if success
-                    S{g,f} = svm_struct_train;
+                    			S{1,i} = svm_struct_train;
 					Group = svmclassify(svm_struct_train, xdata_test);
 
 					d = 0;
@@ -58,19 +60,23 @@ function [struct] = crossvalidate ( xdata, group )
 							d = d+1;
 						end
 					end
+					D1(1,i) = d;
 					D(f,g) = D(f,g) + d;
 				else 
 					[s, ~] = size(xdata_test);
+					D1(1,i) = s;
 					D(f,g) = D(f,g) + s;
 				end 
 			end
 
 			D(f,g) = D(f,g)./k;
+			[x,y] = find(D1 == min(min(D1)));
+                   	S{f,g} = S1{x(1),y(1)};
 		end
 	end
 
 	display(D);
 	[x,y] = find(D == min(min(D)));
-    struct = S{x,y};
+   	svm_struct = S{x(1),y(1)};
     
 
