@@ -11,7 +11,7 @@ __author__ = 'budde'
 train_ratio = 0.8
 image_dir = ["graphs", "graphs2"]
 out_dir = "out"
-
+size = 30
 
 def generate_sets_from_dir_and_ratio(path, ratio):
     sets = ([], [])
@@ -64,7 +64,7 @@ def resize_image(image_path, width=30, height=30, method=Image.ANTIALIAS):
 
 def resize_images(file_paths):
     for p in file_paths:
-        resize_image(p)
+        resize_image(p, size, size)
 
 
 def generate_and_copy_for_dirs(image_dirs, output_dir, ratio):
