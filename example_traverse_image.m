@@ -6,8 +6,8 @@ function [ ] = example_traverse_image( )
     addpath('emd');
     addpath('histogram');
 
-    box_size = 60;
-    step = 15;
+    box_size = 15
+    step = 7;
     resize_scale = 0.1;
     
     struct_file = 'struct.mat';
