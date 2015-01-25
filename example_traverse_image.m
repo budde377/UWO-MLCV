@@ -28,7 +28,7 @@ function [ ] = example_traverse_image( )
     %FIND
     
     display('STARTING FIND');
-    Io = imread('images/4.jpg');
+    Io = imread('images/1.jpg','jpeg');
     [h,w,~] = size(Io);
     down_size = 300;
     if max(h,w) > down_size;
