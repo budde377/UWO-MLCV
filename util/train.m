@@ -2,11 +2,9 @@ function [ svm_struct ] = train( folder, struct_file)
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
     
-	use_file = nargin < 2;
-
+	use_file = nargin == 2;
     positive_url = [folder '/n/'];
     negative_url = [folder '/nn/']; 
-    
     % TRAIN
     % Load svm struct if already created. 
     if use_file && exist(struct_file, 'file') == 2

@@ -1,4 +1,4 @@
-function [ G, Greal, d ] = test( test_folder, svm_struct)
+function [ d, G, Greal] = test( test_folder, svm_struct)
 %TEST Summary of this function goes here
 %   Detailed explanation goes here
 	positive_url = [test_folder '/n/'];
