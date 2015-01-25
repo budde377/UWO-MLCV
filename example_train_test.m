@@ -1,3 +1,5 @@
+% Example shows ...
+
 addpath('histogram');
 addpath('emd');
 addpath('util');

@@ -1,8 +1,8 @@
 function [ ] = traverse_image( I_orig, box_size, folder, struct_file )
-% TRAVERSE IGAGE
-% This function traverses image 'I' and classifies each subimage as 'Node' or 'Not node'.
-	
-	addpath('../util');
+
+% TRAVERSE IMAGE
+% This function traverses image 'I' and classifies
+% each subimage as 'Node' or 'Not node'
 
 	step = 7;
 	resize_scale = 0.1;
@@ -25,8 +25,9 @@ function [ ] = traverse_image( I_orig, box_size, folder, struct_file )
 
 	I = rgb2gray(I_orig);
 
+	% Find nodes
 	classify = @(x) svmclassify(svm_struct, x) == 1;
-	N = find_nodes_in_image_diff_size(resize_scale, I, box_size, step, classify, min_scale);
+	N = find_nodes_in_image(resize_scale, I, box_size, step, classify, min_scale);
    	
 	[s, ~] = size(N(:,1));
 	G = zeros(1,s);

@@ -1,36 +1,32 @@
-function [ N ] = find_nodes_in_image( I, box_size, step, classify)
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+function [ N ] = find_nodes_in_image(scale, I, box_size, step, classify, min_scale)
 
-    [h, w] = size(I);
-        
-    num_step_box = ceil(box_size/step);
-    
-    num_h_steps = floor(h/step)-num_step_box;
-    num_w_steps = floor(w/step)-num_step_box;
-    
-    
-    Icanny = edge(I,'canny',0.4);
-    [~, Gdir] = imgradient(Icanny);
- 
-    N = [];
-    for i = 0:num_h_steps
-        for j = 0:num_w_steps
-            offset_i = i*step;
-            offset_j = j*step;
-            I3 = I(offset_i+1:offset_i+box_size, offset_j+1:offset_j+box_size);
-            I3canny = Icanny(offset_i+1:offset_i+box_size, offset_j+1:offset_j+box_size);
-            if sum(I3canny(:)) > 0
-                I3GDir = Gdir(offset_i+1:offset_i+box_size, offset_j+1:offset_j+box_size);
+	[h_orig, w] = size(I);
+	h = h_orig;
 
-                v = generate_feature_vector(I3, I3canny, I3GDir);
-                c = classify(v);
-                vc = [v, c];
-                if c
-                    N = [N; offset_i,offset_j, box_size];
-                end
-            end
-        end
-    end    
+	h_down = h * scale;
+	s = (h - h_down) / h;
+	h_stop = h_orig * min_scale;
+
+	j = 1;
+	N1 = [];
+
+	% Loop until 'box_size' or 'h_stop' exceeds image size or scale 's' is <= 0
+	while h >= box_size && w >= box_size && h >= h_stop && s > 0
+
+%		display(size(I));
+
+		N2 = find_nodes_in_image(I, box_size, step, classify) * j;
+		N1 = [N1; N2];
+		j = j / s;
+
+		% Downscale image if possible
+		if s > 0
+			I = imresize(I, s);
+			[h, w] = size(I);
+			s = (h - h_down) / h;
+		end 
+
+	end
+	
 end
 
