@@ -1,4 +1,4 @@
-function [ svm_struct ] = train( folder, struct_file)
+function [ svm_struct ] = train( folder, struct_file )
 
 % TRAIN
 % Blablabla

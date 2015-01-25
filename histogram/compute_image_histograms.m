@@ -1,22 +1,12 @@
 function [H] = compute_image_histograms ( I, Gdir )
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
 
-    
-  
-
-    % Find 0 pixels
-	Z = find(~I);
-
-	
-	I = double(I);
-	
-	% Vector for histogram	
 	H = {[1],[1],[1],[1],[1],[1],[1],[1]};
-	
-	% Binsize
 	b = 20;
+
+	% Find 0 pixels
+	Z = find(~I);
 	
+	I = double(I);	
 	[width,~] = size(I);
 	
 	% Go through matrix of gradient directions
@@ -37,6 +27,5 @@ function [H] = compute_image_histograms ( I, Gdir )
 			% Decide the bin
 			H{j}(end+1) = floor(p./b)*b;
 		end
-    end
-
+	end
 end

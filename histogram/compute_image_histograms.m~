@@ -1,23 +1,8 @@
-function [H] = compute_image_histograms ( I )
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
-
-	addpath('../util');
-	
-	I = rgb2gray(I);
-	
-	% imshow(I);
-	
-	I = edge(I,'canny',0.4);
+function [H] = compute_image_histograms ( I, Gdir )
 
 	% Find 0 pixels
 	Z = find(~I);
 	
-	% Calculate gradient direction
-	[~, Gdir] = imgradient(I);
-	figure;
-	imshowpair(I, Gdir, 'montage');
-
 	I = double(I);
 	
 	% Vector for histogram	
@@ -47,3 +32,4 @@ function [H] = compute_image_histograms ( I )
 			H{j}(end+1) = floor(p./b)*b;
 		end
 	end
+end

@@ -1,4 +1,4 @@
-function [ d, G, Greal] = test( test_folder, svm_struct)
+function [ d, G, Greal] = test( test_folder, svm_struct )
 
 % TEST
 % Blablabla

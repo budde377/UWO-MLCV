@@ -26,8 +26,7 @@ function [ ] = traverse_image( I_orig, box_size, folder, struct_file )
 	I = rgb2gray(I_orig);
 
 	% Find nodes
-	classify = @(x) svmclassify(svm_struct, x) == 1;
-	N = find_nodes_in_image(resize_scale, I, box_size, step, classify, min_scale);
+	N = find_nodes_in_image(resize_scale, I, box_size, step, svm_struct, min_scale);
    	
 	[s, ~] = size(N(:,1));
 	G = zeros(1,s);
