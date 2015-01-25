@@ -16,7 +16,7 @@ function [svm_struct] = crossvalidate ( xdata, group )
 	n2 = 'method';
 	G = {'QP','SMO','LS'};
 	n3 = 'options';
-	opt = statset('MaxIter', 50000);
+	opt = statset('MaxIter', 1000000);
 
 	for g = 1:3
 		for f = 1:3		
