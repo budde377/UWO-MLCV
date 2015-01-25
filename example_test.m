@@ -1,4 +1,4 @@
-% Example shows ...
+% Example testing with training and testing images size 30x30
 
 addpath('histogram');
 addpath('emd');

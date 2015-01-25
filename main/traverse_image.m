@@ -1,4 +1,4 @@
-function [ ] = traverse_image( I_orig, box_size, folder, struct_file )
+function [ ] = traverse_image( I_orig, box_size, folder, svm_struct )
 
 % TRAVERSE IMAGE
 % This function traverses image 'I' and classifies
@@ -8,11 +8,6 @@ function [ ] = traverse_image( I_orig, box_size, folder, struct_file )
 	resize_scale = 0.1;
 	down_size = 300;
 	min_scale = 0.01;
-
-	% TRAIN
-	display('STARTING TRAINING');
-
-	svm_struct = train(folder, struct_file);
 
 	%FIND
 	display('STARTING SEARCH');

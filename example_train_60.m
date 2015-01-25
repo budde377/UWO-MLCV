@@ -1,3 +1,5 @@
+% Example training with training images size 60x60
+
 addpath('histogram');
 addpath('emd');
 addpath('util');
