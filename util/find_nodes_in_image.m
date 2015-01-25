@@ -1,4 +1,4 @@
-function [ N ] = find_nodes_in_image(scale, I, box_size, step, svm_struct, min_scale )
+function [ N1 ] = find_nodes_in_image(scale, I, box_size, step, svm_struct, min_scale )
 
 	[h_orig, w] = size(I);
 	h = h_orig;
@@ -15,7 +15,7 @@ function [ N ] = find_nodes_in_image(scale, I, box_size, step, svm_struct, min_s
 
 %		display(size(I));
 
-		N2 = find_nodes_in_image(I, box_size, step, svm_struct) * j;
+		N2 = find_nodes_in_scaled_image(I, box_size, step, svm_struct) * j;
 		N1 = [N1; N2];
 		j = j / s;
 

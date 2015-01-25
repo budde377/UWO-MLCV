@@ -1,10 +1,10 @@
-function [ ] = traverse_image( I_orig, box_size, folder, svm_struct )
+function [ ] = traverse_image( I_orig, box_size, svm_struct )
 
 % TRAVERSE IMAGE
 % This function traverses image 'I' and classifies
 % each subimage as 'Node' or 'Not node'
 
-	step = 7;
+	step = 15;
 	resize_scale = 0.1;
 	down_size = 300;
 	min_scale = 0.01;
@@ -13,7 +13,7 @@ function [ ] = traverse_image( I_orig, box_size, folder, svm_struct )
 	display('STARTING SEARCH');
 
 	% Downscale image if necessary
-	[h, w, ~] = size(I);
+	[h, w, ~] = size(I_orig);
 	if max(h, w) > down_size;
 		I_orig = imresize(I_orig, [down_size*(h/w), down_size]);
 	end
@@ -28,16 +28,26 @@ function [ ] = traverse_image( I_orig, box_size, folder, svm_struct )
 
 	% Group found nodes according to containment
 	for i = 1:s
-		% Calculate node 'n1' center coordinates
-		[x1, y1, d1] = N(i,:);
+		% Calculate node 'n1' center coordinates		
+		xy1 = N(i,:);
+		x1 = xy1(1);
+		y1 = xy1(2);
+		d1 = xy1(3);
+
 		n1 = [x1 + d1/2, y1 + d1/2];
 
 		for j = 1:s
 			% Calculate node 'n2' center coordinates
-			[x2, y2, d2] = N(j,:);			
+			xy2 = N(j,:);
+			x2 = xy2(1);
+			y2 = xy2(2);
+			d2 = xy2(3);
+		
 			n2 = [x2 + d2/2, y2+ d2/2];
 
-			if G(j) == 0 && distance_between_nodes(n1,n2) < min(d1, d2)/2
+			d = sqrt((n1(1)-n2(1))^2+(n1(2)-n2(2))^2);
+
+			if G(j) == 0 && d < min(d1, d2)
 				% Group nodes
 				if G(i) == 0					
 					G(j) = i;

@@ -3,6 +3,7 @@
 addpath('histogram');
 addpath('emd');
 addpath('util');
+addpath('main');
 
 train_folder = 'data_sets/train-30/';
 test_folder = 'data_sets/test-30/';
