@@ -44,7 +44,7 @@ function [ ] = example_traverse_image( )
    
     
     
-    s = size(N(:,1));
+    [s, ~] = size(N(:,1));
     M = zeros(1,s);
     for i = 1:s
         n1 = N(i,:);
