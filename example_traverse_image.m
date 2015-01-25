@@ -6,7 +6,7 @@ function [ ] = example_traverse_image( )
     addpath('emd');
     addpath('histogram');
 
-    box_size = 30;
+    box_size = 60;
     step = 15;
     resize_scale = 0.1;
     
