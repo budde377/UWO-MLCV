@@ -4,9 +4,9 @@ function [ Groups, I_orig ] = traverse_image( I_orig, box_size, svm_struct )
 % This function traverses image 'I' and classifies
 % each subimage as 'Node' or 'Not node'
 
-	step = 15;
+	step = floor(box_size/2);
 	resize_scale = 0.1;
-	down_size = 300;
+	down_size = box_size*10;
 	min_scale = 0.01;
 
 	%FIND
@@ -47,7 +47,7 @@ function [ Groups, I_orig ] = traverse_image( I_orig, box_size, svm_struct )
 
 			d = sqrt((n1(1)-n2(1))^2+(n1(2)-n2(2))^2);
 
-			if G(j) == 0 && d < min(d1, d2)
+			if G(j) == 0 && d < min(d1, d2) / 2
 				% Group nodes
 				if G(i) == 0					
 					G(j) = i;

@@ -1,0 +1,15 @@
+% Example traversal of image with training images size 30x30
+
+addpath('histogram');
+addpath('emd');
+addpath('util');
+addpath('main');
+
+train_folder = 'data_sets/train-60/';
+test_folder = 'data_sets/test-60/';
+
+svm_struct = train(train_folder, 'struct-60.mat');
+
+I = imread('images/1.jpg','jpg');
+
+traverse_image(I, 60, svm_struct);
