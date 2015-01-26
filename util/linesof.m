@@ -1,6 +1,4 @@
 function [lines] = linesof ( I )
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
 
 	I = rgb2gray(I);
 	BW = edge(I,'canny',0.4);
@@ -13,8 +11,8 @@ function [lines] = linesof ( I )
 
 	lines = houghlines(BW, t, r, P, 'FillGap', 60, 'Minlength', 200);
 
-	figure, imshow(BW), hold on
-	max_len = 0;
+	% Plot line segments on image
+	figure, imshow(I), hold on
 	for k = 1:length(lines)
 		xy = [lines(k).point1; lines(k).point2];
 		plot(xy(:,1),xy(:,2),'LineWidth',2,'Color','green');
@@ -22,11 +20,4 @@ function [lines] = linesof ( I )
 		% Plot beginnings and ends of lines
 		plot(xy(1,1),xy(1,2),'x','LineWidth',2,'Color','yellow');
 		plot(xy(2,1),xy(2,2),'x','LineWidth',2,'Color','red');
-
-		% Determine the endpoints of the longest line segment
-		len = norm(lines(k).point1 - lines(k).point2);
-		if ( len > max_len)
-			max_len = len;
-			xy_long = xy;
-		end
 	end

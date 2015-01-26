@@ -1,4 +1,4 @@
-function [ ] = traverse_image( I_orig, box_size, svm_struct )
+function [ Groups, I_orig ] = traverse_image( I_orig, box_size, svm_struct )
 
 % TRAVERSE IMAGE
 % This function traverses image 'I' and classifies
