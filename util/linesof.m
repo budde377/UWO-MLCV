@@ -1,4 +1,4 @@
-function [lines] = linesof ( I )
+function [lines] = linesof ( I, min_length )
 
 	I = rgb2gray(I);
 	BW = edge(I,'canny',0.4);
@@ -9,7 +9,7 @@ function [lines] = linesof ( I )
 	x = t(P(:,2));
 	y = r(P(:,1));
 
-	lines = houghlines(BW, t, r, P, 'FillGap', 60, 'Minlength', 200);
+	lines = houghlines(BW, t, r, P, 'FillGap', min_length/4, 'Minlength', min_length);
 
 	% Plot line segments on image
 	figure, imshow(I), hold on
