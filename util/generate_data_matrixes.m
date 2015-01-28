@@ -1,6 +1,4 @@
 function [ G, F ] = generate_data_matrixes( positive_path, negative_path, file_type)
-%UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
 
 	Is = load_images_from_folder(positive_path, file_type);
 	Dpos = generate_feature_matrix(Is);

@@ -1,8 +1,7 @@
 function [ Groups, I_orig ] = traverse_image( I_orig, box_size, svm_struct )
 
 % TRAVERSE IMAGE
-% This function traverses image 'I' and classifies
-% each subimage as 'Node' or 'Not node'
+% This function traverses image 'I' and classifies each subimage as 'Node' or 'Not node'
 
 	step = floor(box_size/2);
 	resize_scale = 0.1;

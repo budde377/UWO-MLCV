@@ -1,7 +1,7 @@
 function [L, c] = link ( I, N )
 
 % LINK
-% Blablabla
+% Detect links between the given set of nodes on the given image
 
 	% Get line segments
 	min_d = min(N(:,3));
@@ -70,4 +70,3 @@ function [L, c] = link ( I, N )
 			end
 		end
 	end	
-	c

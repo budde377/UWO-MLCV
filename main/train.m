@@ -1,7 +1,7 @@
 function [ svm_struct ] = train( folder, struct_file )
 
 % TRAIN
-% Blablabla
+% Trains an SVM classifier using crossvalidation
 	
 	use_file = nargin == 2;
 	positive_url = [folder '/n/'];
