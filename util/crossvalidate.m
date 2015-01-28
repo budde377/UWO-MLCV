@@ -77,6 +77,8 @@ function [svm_struct] = crossvalidate ( xdata, group )
 
 	display(D);
 	[x,y] = find(D == min(min(D)));
+	display(F(x));
+	display(G(y));
    	svm_struct = S{x(1),y(1)};
     
 
