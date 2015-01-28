@@ -2,6 +2,7 @@ data_sets/data_sets/train
 data_sets/data_sets/train.tar
 data_sets/data_sets/test
 data_sets/data_sets/test.tar
+*.mat
 class
 features
 *.asv
