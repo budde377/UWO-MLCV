@@ -30,9 +30,10 @@ function [svm_struct] = crossvalidate ( xdata, group )
 				xdata_test = [1];
 				group_test = group(1,1);
 				m = 1;
-
+				xdata_test_size = 0;
 				for j = 1:height
 					if i == r(j)
+						xdata_test_size = xdata_test_size+ 1;
 						xdata_test(m,1:width) = xdata(j,1:width);
 						group_test(m,1:end) = group(j,1);
 						m = m+1;
@@ -60,12 +61,12 @@ function [svm_struct] = crossvalidate ( xdata, group )
 							d = d+1;
 						end
 					end
-					D1(1,i) = d;
-					D(f,g) = D(f,g) + d;
+					d_percent = d / xdata_test_size;
+					D1(1,i) = d_percent;
+					D(f,g) = D(f,g) + d_percent;
 				else 
-					[s, ~] = size(xdata_test);
-					D1(1,i) = s;
-					D(f,g) = D(f,g) + s;
+					D1(1,i) = 1;
+					D(f,g) = D(f,g) + 1;
 				end 
 			end
 
